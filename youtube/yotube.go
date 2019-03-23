@@ -193,7 +193,7 @@ func (video *Video) Download(index int, filename string, option *Option) error {
 		} else {
 			fmt.Println("Extracting audio ..")
 			fname := video.Filename
-			mp3 := strings.TrimRight(fname, filepath.Ext(fname)) + ".mp3"
+			mp3 := strings.TrimSuffix(fname, filepath.Ext(fname)) + ".mp3"
 			cmd := exec.Command(ffmpeg, "-y", "-loglevel", "quiet", "-i", fname, "-vn", mp3)
 			cmd.Stdin = os.Stdin
 			cmd.Stdout = os.Stdout
